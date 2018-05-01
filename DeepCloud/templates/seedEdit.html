@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Start From a Seed</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+	<link rel='stylesheet' href = "{% static 'main.css' %}">
+	<link rel='stylesheet' href = "{% static 'normalize.css' %}">
+</head>
+<body onload="loadFeatureSliders()">
+	<span style="font-size:30px;cursor:pointer;margin-left: 25px" onclick="openNav()">&#9776; </span>
+
+
+	<!-- Menu -->
+	<!-- Menu -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/">Home</a>
+        <a href="/seedStart/">Start from Seed</a>
+        <a href="/hybrid/">Hybrid</a>
+    </div>
+	<!-- Menu -->
+	<!-- Menu -->
+
+    
+	<!-- Main content page -->
+	<!-- Main content page -->
+	<div id="main" style="transform: translate(0, -75%)">
+
+	    <table>
+	        <tr>
+	        	<td>
+	            	<p class= "notes" id="guideText">Please adjust the sliders to get desired design</p>
+	            </td>
+
+	        </tr>
+	        <tr>
+	        	<td style="margin-left: 25px" width="100%">
+	        		<h1 style="float:left;">DeepCloud</h1>
+	            </td>
+	        </tr>
+	        <tr>
+	        	<td >
+	        		<table id="featureSliders"  onload="initSliders()" style="float:left;">
+	        		<table id = "canvas" style= "width:50;height:50; " style="float:left;">
+	        		<img src="/static/img/guide.png" width ="80%" class= "guideImage" id="guideImage0">
+	        		<img src="/static/img/mouse.png" width ="10%" class= "guideImage2" id="guideImage1">
+	            </td>
+				
+					
+				</td>
+	        </tr>
+	        <tr>
+					
+
+	        </tr>
+	    </table>
+	</div>
+<p id="dataSent" style = "font-size: 10px; position: absolute; bottom: -73%; right: 1%">Data</p>
+</body>
+
+<!-- Main content page -->
+<!-- Main content page -->
+
+
+<!-- <script src="static/vendor/modernizr-3.5.0.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script src="\static\OBJLoader.js"></script> -->
+<script src="\static\three.js"></script>
+<script src="\static\OrbitControls.js"></script>
+<script src="\static\dat.gui.min.js"></script>
+<script src="\static\navMenu.js"></script>
+<script src="\static\seedEdit.js"></script>
+<script src="\static\bundle.js"></script>
+<script src="\static\KORGRead.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!-- This is a template and sketch for the point cloud viewer  -->
+
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel='stylesheet' href = "{%static 'main.css'}">
+	</head>
+
+	<body>
+
+		<h1>DeepCloud Viewer</h1>
+		<div id="pointViewer">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <!-- <script src="\static\OBJLoader.js"></script> -->
+            <script src="\static\three.js"></script>
+            <script src="\static\OrbitControls.js"></script>
+            <script src="\static\dat.gui.min.js"></script>
+            <script src="\static\main.js"></script>
+			<!-- <script src="\static\leap-0.6.4.js"></script> -->
+			<script src="https://cdn.rawgit.com/leapmotion/leapjs/604a9159/leap-0.6.4.js"></script> 
+        </div>
+		
+		<canvas id="LeapReading" width="500" height="500" style="border:1px solid #c3c3c3;">Your browser does not support the canvas element.
+		</canvas>
+	</body>
+<script>
+Leap.loop(function(frame)  
+{
+	if (frame.pointables.length > 4 && frame.pointables[0].frame.hands[0].type == "left") 
+	//if (frame.pointables.length > 4) 
+   { 
+		var c=document.getElementById("LeapReading");
+		var ctx=c.getContext("2d");
+   
+		ctx.clearRect(0, 0, 500, 500);
+		
+		var i;
+		for (i = 0; i < 5; i++) { 
+		
+		var position = frame.pointables[i].tipPosition;
+		//console.log("FINGER:" + i + "X: " + position[0] + " Y: " + position[1]); 
+		console.log(frame.pointables); 
+
+		ctx.beginPath();
+		ctx.strokeStyle = "black";
+		ctx.arc(250+position[0],500-position[1],10,0,2*Math.PI);
+		ctx.stroke();
+		}
+		
+		var palmPosition = frame.pointables[0].frame.hands[0].palmPosition;
+		
+		ctx.beginPath();
+		ctx.strokeStyle = "red";
+		ctx.arc(250+palmPosition[0],500-palmPosition[1],10,0,2*Math.PI);
+		ctx.stroke();
+		
+		//ctx.clearRect(0, 0, 500, 500);
+
+   } 
+ }); 
+</script>
+</html>

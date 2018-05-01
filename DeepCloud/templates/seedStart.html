@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Start From a Seed</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
+	<link rel='stylesheet' href = "{% static 'main.css' %}">
+	<link rel='stylesheet' href = "{% static 'normalize.css' %}">
+
+</head>
+<body>
+    <span style="font-size:30px;cursor:pointer;margin-left: 25px" onclick="openNav()">&#9776; </span>
+
+
+        <!-- Menu -->
+        <!-- Menu -->
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="/">Home</a>
+            <a href="/seedStart/">Start from Seed</a>
+            <a href="/hybrid/">Hybrid</a>
+        </div>
+        <!-- Menu -->
+        <!-- Menu -->
+
+        
+        <!-- Main content page -->
+        <!-- Main content page -->
+        <div id="main" style="transform: translate(0, -50%)">
+
+            <table >
+                <tr>
+                    <tr ><p class= "notes" id="guideText">Please select one of the libraries and load the images</p></tr>
+                </tr>
+
+                <tr>
+                    <th style="margin-left: 25px" width="200px"><h1 style="float:left;">DeepCloud</h1></th>
+
+                    <!-- For the drop down menu -->
+                    <!-- <th><a  class="startButton" role="button" onclick="loadThumbnails('hat')" >Load</a></th> -->
+                    <th>
+                        <div class="dropdown">
+                        <button class="startButton" onmouseover="loadClass()">Load Class
+                            <i class="fa fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a onclick="loadThumbnails('chair')">Chair</a>
+                            <a onclick="loadThumbnails('cap')">cap</a>
+                            <a onclick="loadThumbnails('car')">car</a>
+                            <a onclick="loadThumbnails('table')">table</a>
+                        </div>
+                        </div>
+                    </th>
+                </tr>
+            </table>
+            <table  id="thumbnailTable">
+
+            </table>
+            <table>
+                <tr ><p class ="notes" id="names">Ardavan Bidgoli | Pedro Veloso | Shenghui Jia</p></tr>
+            </table>
+        </div>
+
+<!-- Main content page -->
+<!-- Main content page -->
+
+
+<!-- <script src="static/vendor/modernizr-3.5.0.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- <script src="\static\OBJLoader.js"></script> -->
+<script src="\static\three.js"></script>
+<script src="\static\OrbitControls.js"></script>
+<script src="\static\dat.gui.min.js"></script>
+<script src="\static\navMenu.js"></script>
+<script src="\static\seedStart.js"></script>
+
+<!-- <script src="static/plugins.js"></script> -->
+<!-- <script src="/static/main.js"></script> -->
+
+</body>
+</html>
+
