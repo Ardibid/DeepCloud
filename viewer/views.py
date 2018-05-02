@@ -25,21 +25,15 @@ def hybridEdit(request):
 
 intitialLatentVector = np.array(())
 def loadModelByName(request):
-    print ("---------------")
-    print ("loading a new model")
-    print(request)
-    print ("---------------")
+
 
     global gen
     try:
         tmp=(request.GET["data0"])
         className = tmp.split(",")[0]
-        print ("loading this model:",className)
         gen.restoreModelAgain(className)
         modelIndex = tmp.split(",")[1]
         modelIndex = modelIndex.split("=")[1]
-        print ("++++000++++")
-        print (className,modelIndex)
         loadInstanceLatentVectore(className,modelIndex)
         return HttpResponse("Loading")
     except:
@@ -47,14 +41,9 @@ def loadModelByName(request):
 
 def loadInstanceLatentVectore(className,index):
     global intitialLatentVector
-    print ("++++111++++")
     path = "./DeepCloud/static/latentVectors/"+className+".npy"
     latentVectors = np.load(path)
-    print (latentVectors.shape,className,index)
     intitialLatentVector = latentVectors[int(index)]
-    print ("++++222++++")
-    print (intitialLatentVector.shape, className,index)
-    print ("-------------")
 
     return latentVectors[index]
 
@@ -77,6 +66,7 @@ def loadLatentVectors(className, indices):
 
 def hybrid2PC(request):
     global intitialLatentVector
+    global geb
     try:
         indices = []
         weights = []
@@ -89,7 +79,7 @@ def hybrid2PC(request):
         vectors = loadLatentVectors(objectClass, indices)
     except:
         return HttpResponse("Fail")
-        
+    gen.restoreModelAgain(objectClass)
     data = interpolate(vectors, np.array(weights))    
     pc = latentProcess(data)
     return HttpResponse(pc)
@@ -103,7 +93,6 @@ def latent2PC(request):
         for i in range(32):
             tag = "data"+str(i)
             data.append(float(request.GET[tag]))
-        #print (data)
         
     except:
         return HttpResponse("Fail")
@@ -113,9 +102,6 @@ def latent2PC(request):
     # sampleLatent = np.load(path)/10.0
 
     sampleLatent = np.array(intitialLatentVector)
-    print ("-------------")
-    print (sampleLatent.shape)
-    print ("-------------")
     data = sampleLatent + data
     
     pc = latentProcess(data)
@@ -133,7 +119,6 @@ def latentProcess(data):
     #pc = loadPC("0")
     #pc = [[0, 1, 2],[3, 4],[5, 6, 7, 8],[9]]
     pc = gen.ae.decode(feature_vector)[0]
-    #print(pc.shape)
 
     result = ""
     
@@ -153,7 +138,6 @@ def latentProcess(data):
 
     #3) convert the last coordinate of the last point
     result += str(pc[-1][-1])
-    print("produced point cloud", pc[0][0], pc[0][1], pc[0][2], result[:30])
     return result
 
 # boiler plate functions
@@ -187,7 +171,6 @@ def randomPC(request):
     #pc = loadPC("0")
     #pc = [[0, 1, 2],[3, 4],[5, 6, 7, 8],[9]]
     pc = gen.ae.decode(feature_vector)[0]
-    #print(pc.shape)
 
     result = ""
     
@@ -207,7 +190,6 @@ def randomPC(request):
 
     #3) convert the last coordinate of the last point
     result += str(pc[-1][-1])
-    print("produced point cloud", pc[0][0], pc[0][1], pc[0][2], result[:30])
     return HttpResponse(result)
 
 def randomPCs(request):
@@ -225,7 +207,6 @@ def randomPCs(request):
     #pc = loadPC("0")
     #pc = np.array(list(range(60))).reshape(5, 4, 3)
     pc = gen.ae.interpolate(state[0], state[1], 10)
-    print(pc.shape)
 
     for i in range(len(pc)-1):
         #1) convert all but the last point
@@ -261,7 +242,6 @@ def randomPCs(request):
 
     #3) convert the last coordinate of the last point
     result += str(pc[-1][-1])
-    #print("produced point cloud", pc[0][0], pc[0][1], pc[0][2], result[:30])
     state = state.pop(0)
     return HttpResponse(result)
 
@@ -281,7 +261,6 @@ def templatePyFunctionReceive(request):
         for i in range(8):
             tag = "data"+str(i)
             data.append(float(request.GET[tag]))
-        print (data)
         return HttpResponse("Good job!")
     except:
 

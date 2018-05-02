@@ -36995,8 +36995,8 @@ nanoKONTROL.connect()
     if (this.event == 'theRest:44')
     {
       r = $('#UIknob10').text(value);
-      console.log("This is big knob",r);
-      rotateCamera();
+      // console.log("This is big knob",r);
+      // rotateCamera();
     }
     if (this.event == 'theRest:20')
     {
@@ -37017,7 +37017,7 @@ nanoKONTROL.connect()
   });
 
   device.on('allTriggers:*', function(value){
-    console.log("--------------------");
+    // console.log("--------------------");
     $('#guideText').text(value);
   });
 
@@ -37052,7 +37052,7 @@ function sendLatentVector(msg)
             if(xhttp.readyState == 4 && xhttp.status == 200)
             {
                 var data = xhttp.responseText;
-                console.log(data);
+                // console.log(data);
             }
         };
         sendParameters = "?data0="+msg[0].toString()

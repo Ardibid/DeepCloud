@@ -101,6 +101,24 @@ function loadFeatureSliders2(modelClass){
     }
 }
 
+
+function sendData(){
+    sendHybridData();
+  // tmpVar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+  // for (var i = 0 ; i < 8 ; i ++){
+  //   // var sliderVal = $('#UIslider'+i.toString()).val();
+  //   // var knobVal =   ($('#UIknob'+i.toString()).val()/64)+2;
+  //   var sliderVal = $('#UIslider'+i.toString()).val()/64;
+  //   var knobVal =   ($('#UIknob'+i.toString()).val()/128);
+  //   tmpVar[i]=(parseFloat(sliderVal)+parseFloat(knobVal));
+
+  // }
+  // message = "Latent Vector: {"+ tmpVar.toString();+"}";
+  // $("#dataSent").text(message)
+  // sendLatentVector(tmpVar)
+}
+
+
 //PEDRO//WAS//HERE//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

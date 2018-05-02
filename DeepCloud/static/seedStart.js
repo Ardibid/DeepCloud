@@ -12,7 +12,7 @@ function gotoEditPage(message){
         {
             // we store the xhttp response in a variable and print it
             var data = xhttp.responseText;
-            console.log(data);
+            // console.log(data);
         }
     };
 
@@ -48,7 +48,7 @@ function loadThumbnails(modelClass) {
     var table = document.getElementById('thumbnailTable');
 
     while(table.rows.length>0){
-        console.log("deleting rows!");
+        // console.log("deleting rows!");
         table.deleteRow(-1);
     }
 
@@ -66,7 +66,7 @@ function loadThumbnails(modelClass) {
             img.setAttribute("id", (rowSize*i+j).toString());
             var path =  "/static/img/thumbnails/"+modelClass+"/0"+(rowSize*i+j).toString()+".png";
             img.src = path;
-            console.log(path)
+            // console.log(path)
             x.appendChild(img);
         }
     }
@@ -82,7 +82,7 @@ function loadThumbnailsMultipleChoise(modelClass) {
     var table = document.getElementById('thumbnailTable');
 
     while(table.rows.length>0){
-        console.log("deleting rows!");
+        // console.log("deleting rows!");
         table.deleteRow(-1);
     }
 
@@ -121,7 +121,7 @@ function registerSingleClick(element){
 }
 
 function registerClick(element){
-    console.log("registerclick");
+    // console.log("registerclick");
    
    if (selection.indexOf(element.id) >= 0){
         selection.pop(element.id);
@@ -138,6 +138,6 @@ function registerClick(element){
     if (selection.length == 4){
         startMix(selection);
     }
-    console.log(selection);
+    // console.log(selection);
 }
 

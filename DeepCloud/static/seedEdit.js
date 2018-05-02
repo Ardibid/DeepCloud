@@ -1,5 +1,5 @@
 function loadThumbnails(modelClass) {
-    console.log("SeesEdit");
+    // console.log("SeesEdit");
     var note = document.getElementById('guideText');
     var names = document.getElementById('names');
     note.style.display="none";
@@ -7,7 +7,7 @@ function loadThumbnails(modelClass) {
     var table = document.getElementById('thumbnailTable');
 
     while(table.rows.length>0){
-        console.log("deleting rows!");
+        // console.log("deleting rows!");
         table.deleteRow(-1);
     }
 
@@ -32,7 +32,7 @@ function loadThumbnails(modelClass) {
 
 
 function loadFeatureSliders(modelClass){
-    console.log("This is working!");
+    // console.log("This is working!");
     //modelClass = "chair";
     var req = new XMLHttpRequest();
     req.open('GET', document.location, false);
@@ -41,7 +41,7 @@ function loadFeatureSliders(modelClass){
     modelClass= modelClass.split(',')[0]
     itemSelected  = req.responseURL.split('=')[2]
     
-    console.log(modelClass, itemSelected)
+    // console.log(modelClass, itemSelected)
     var table = document.getElementById('featureSliders');
     var colNum = 4;
     for (var i = 0 ; i < colNum ; i ++) {
@@ -169,7 +169,7 @@ function sendLatentVector(msg)
 
 
 function initCanvas(){
-    console.log("init canvas");
+    // console.log("init canvas");
     //var container = document.getElementById('canvas');
     //document.body.appendChild( container );
     ////////////////////////////// 
@@ -407,7 +407,7 @@ function readPointData(){
         {
             // we store the xhttp response from python in a variable
             var data = xhttp.responseText;
-            console.log("from urls:",data)
+            // console.log("from urls:",data)
         }
     }
     // just add the name of function from appName\views.py: loadPoints for example

@@ -87,7 +87,7 @@ function readPointData(){
         {
             // we store the xhttp response from python in a variable
             var data = xhttp.responseText;
-            console.log("from urls:",data)
+            // console.log("from urls:",data)
         }
     }
     // just add the name of function from appName\views.py: loadPoints for example
@@ -101,7 +101,7 @@ function readPointData(){
 ////////////////////////////////////////////////////////////////////
 // bare bon
 function bareBone(){
-    console.log("WORKING");
+    // console.log("WORKING");
     // it communicates with python through XMLHttp
     // the next 5 lines are always the same
     var xhttp = new XMLHttpRequest();
@@ -136,8 +136,8 @@ function bareBone(){
             }
             endTime = new Date();
             var timeDiff = endTime - startTime; 
-            console.log(timeDiff + " ms");
-            console.log()
+            // console.log(timeDiff + " ms");
+            // console.log()
         }
     }
     // just add the name of function from appName\views.py: loadPoints for example
@@ -146,7 +146,7 @@ function bareBone(){
 }
 
 function initGenerator(){
-    console.log("initGenerator");
+    // console.log("initGenerator");
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
@@ -155,10 +155,10 @@ function initGenerator(){
         if(xhttp.readyState == 4 && xhttp.status == 200)
         {
             var data = xhttp.responseText;
-            console.log(data)
+            // console.log(data)
             endTime = new Date();
             var timeDiff = endTime - startTime; 
-            console.log(timeDiff + " ms");
+            // console.log(timeDiff + " ms");
         }
 
         
